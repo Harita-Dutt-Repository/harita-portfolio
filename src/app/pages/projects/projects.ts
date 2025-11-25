@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './projects.scss',
 })
 export class Projects {
+  //Initial addition to project-cards branch
+  
 
 }
