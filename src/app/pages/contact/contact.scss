@@ -1,0 +1,115 @@
+/* Contact Page Full Layout */
+.contact-container {
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Responsive: allows stacking on small screens */
+  }
+  
+  /* Card Layout */
+  .card-section {
+    background: var(--card-white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    border: 2px solid var(--accent-pink);
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-width: 320px; /* ensures readability */
+    max-width: 500px;
+  }
+  
+  /* Center section headings for better UI */
+  .card-section h2,
+  .card-section h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+  }
+  
+  /* Contact Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    color: var(--text-gray);
+  }
+  
+  input,
+  textarea {
+    padding: 0.7rem;
+    border: 2px solid var(--accent-pink);
+    border-radius: var(--radius);
+    outline: none;
+    width: 100%;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: var(--text-gray);
+  }
+  
+  button {
+    padding: 0.8rem;
+    background: skyblue;
+    color: white;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Success Message */
+  .success-message {
+    text-align: center;
+    color: green;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Social contact section */
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .social-links a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-gray);
+  }
+  
+  .social-links img {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+  
+  .social-links img:hover {
+    transform: scale(1.12);
+    filter: brightness(1.25);
+  }
+  
+  /* Responsiveness: On small screens, stack cards vertically */
+  @media (max-width: 750px) {
+    .contact-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }

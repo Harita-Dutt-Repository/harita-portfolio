@@ -1,0 +1,28 @@
+<section class="blog-container">
+
+    <!-- LEFT SIDE: DATE LIST -->
+    <div class="date-list">
+      <h3>Entries</h3>
+  
+      @for (entry of entries; track $index) {
+        <button 
+          class="date-btn"
+          (click)="openEntry(entry)"
+          [class.active]="entry === selectedEntry">
+          {{ entry.date }}
+        </button>
+      }
+    </div>
+  
+    <!-- RIGHT SIDE: CONTENT AREA -->
+    @if (selectedEntry) {
+      <div class="content-area">
+        <h2>{{ selectedEntry.title }}</h2>
+        <small>{{ selectedEntry.date }}</small>
+  
+        <div class="entry-text" [innerHTML]="safeContent"></div>
+      </div>
+    }
+  
+  </section>
+  

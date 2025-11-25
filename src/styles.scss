@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    background: aliceblue;
+    font-family: 'Poppins', sans-serif;
+    color: darkslategray;
+  }
+  /* src/styles.scss -- GLOBAL THEME (single source of truth) */
+:root {
+  --bg-blue: #e9f6fb;        /* page background */
+  --accent-pink: #ffc8e6;    /* accents and badges */
+  --card-white: #ffffff;
+  --text-gray: #233645;
+  --muted: #9aa6af;
+  --radius: 12px;
+  --gap: 1rem;
+  --shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* optional global base styles */
+html, body {
+  height: 100%;
+  background: var(--bg-blue);
+  color: var(--text-gray);
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+  

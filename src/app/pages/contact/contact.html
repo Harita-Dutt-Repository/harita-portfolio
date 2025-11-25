@@ -1,0 +1,76 @@
+<section class="contact-container">
+
+    <!-- CARD 1: CONTACT FORM -->
+    <div class="card-section">
+      <h2>Contact Me</h2>
+  
+      <form class="contact-form" (submit)="onSubmit($event)">
+        <label>
+          Name:
+          <input type="text" required />
+        </label>
+  
+        <label>
+          Email:
+          <input type="email" required />
+        </label>
+  
+        <label>
+          Message:
+          <textarea rows="5" required></textarea>
+        </label>
+  
+        <button type="submit">Send Message</button>
+      </form>
+  
+      @if (submitted) {
+        <p class="success-message">
+          ✓ Thank you! I’ll get back to you soon.
+        </p>
+      }
+    </div>
+  
+    <!-- CARD 2: SOCIAL CONTACT -->
+    <div class="card-section">
+      <h3>Connect With Me</h3>
+  
+      <div class="social-links">
+  
+        <!-- GitHub -->
+        <a href="https://github.com/" target="_blank">
+          <img src="assets/icons/github.svg" alt="GitHub Icon" />
+          GitHub Profile
+        </a>
+  
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/harita-dutt-7bb611118/" target="_blank">
+          <img src="assets/icons/linkedin.svg" alt="LinkedIn Icon" />
+          Connect on LinkedIn
+        </a>
+  
+        <!-- Email button with icon -->
+        <!-- <a class="email-link"
+            href="mailto:haritadutt.n@gmail.com?subject=Contact%20from%20Portfolio%20Website&body=Hi%20Harita,%20I%20would%20like%20to%20connect%20with%20you%20regarding..."> -->
+            <!-- <a class="email-link" [attr.href]="mailToLink" target="_blank">
+            <img src="assets/icons/email.svg" alt="Email Icon" />
+            Send me an Email
+        </a> -->
+        <!-- <a class="email-link"
+   href="mailto:haritadutt.n@gmail.com?subject=Contact%20from%20Portfolio%20Website&body=Hi%20Harita,%20I%20would%20like%20to%20connect%20with%20you%20regarding..."
+   target="_blank"
+   rel="noopener noreferrer"
+   (click)="$event.stopPropagation()">
+  <img src="assets/icons/email.svg" alt="Email Icon" />
+  Send me an Email
+</a> -->
+<a class="email-link"
+   href="https://mail.google.com/mail/?view=cm&fs=1&to=haritadutt.n@gmail.com&su=Contact%20from%20Portfolio%20Website&body=Hi%20Harita,%20I%20would%20like%20to%20connect%20with%20you%20regarding..."
+   target="_blank"
+   rel="noopener noreferrer">
+  <img src="assets/icons/email.svg" alt="Email Icon" />
+  Send me an Email
+</a>
+      </div>
+    </div>
+  
+  </section>

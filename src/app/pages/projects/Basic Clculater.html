@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Android Style Auto-Result Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .display {
+      min-height: 120px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      border-bottom: 1px solid #ddd;
+    }
+    .expression {
+      font-size: 28px;
+      color: #333;
+      word-wrap: break-word;
+      max-width: 100%;
+      text-align: right;
+    }
+    .result {
+      font-size: 32px;
+      color: gray;
+      margin-top: 5px;
+    }
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 15px;
+    }
+    button {
+      height: 65px;
+      border: none;
+      border-radius: 50%;
+      font-size: 22px;
+      background: #f0f0f0;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:active {
+      background: #ddd;
+    }
+    .op {
+      color: green;
+      font-weight: bold;
+    }
+    .clear { color: red; font-weight: bold; }
+    .equals {
+      background: green;
+      color: white;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <div class="expression" id="expression">0</div>
+      <div class="result" id="result"></div> <!-- ✅ Empty by default -->
+    </div>
+    <div class="keys">
+      <button class="clear">C</button>
+      <button class="op">( )</button>
+      <button class="op">%</button>
+      <button id="del" class="op">⌫</button>
+
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="op">÷</button>
+
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button class="op">×</button>
+
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button class="op">−</button>
+
+      <button class="op">+/-</button>
+      <button>0</button>
+      <button>.</button>
+      <button class="op">+</button>
+
+      <button class="equals" style="grid-column: 4;">=</button>
+    </div>
+  </div>
+
+  <script>
+    const expEl = document.getElementById("expression");
+    const resEl = document.getElementById("result");
+    const buttons = document.querySelectorAll("button");
+    let expr = "";
+    var subBracketcount = 0;
+
+    function update() {
+      expEl.textContent = expr || "0";
+
+      try {
+        if (expr.trim() === "") {
+          resEl.textContent = "";   // Start empty
+          return;
+        }
+
+        // 🔹 Sirf number (e.g. 88)
+        if (/^\d+(\.\d+)?$/.test(expr)) {
+          console.log(resEl.textContent);
+          resEl.textContent = "";   // Number only → empty
+          return;
+        }
+
+        // 🔹 Last character operator (e.g. 88- , 88+)
+        if (/[\+\−×÷]$/.test(expr)) {
+          console.log(resEl.textContent);
+          resEl.textContent = "";   // Number + operator → empty
+          return;
+        }
+
+        let safe = expr.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-");
+        console.log(resEl.textContent);
+        // 🔹 Percentage handling (a op b% → a op (a*b/100))
+        safe = safe.replace(/(\d+(?:\.\d+)?)([\+\-\*\/])(\d+(?:\.\d+)?)%/g,
+          (match, a, op, b) => {
+            return `${a}${op}(${a}*${b}/100)`;
+          });
+
+        let result = Function("return " + safe)();
+        resEl.textContent = isFinite(result) ? result : "";
+      } catch {
+        console.log(resEl.textContent);
+        resEl.textContent = "";
+      }
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+       
+        console.log(val);
+
+        if (val === "C") {
+          expr = "";
+        } else if (val === "=") {
+          expr = expEl.innerHTML;
+          
+        } else if (val === "+/-") {
+         
+          if (expr.startsWith("-")) expr = expr.slice(1);
+          else expr = "-" + expr;
+        } else if (val === "( )") {
+          console.log(expEl.innerHTML);
+          if(subBracketcount == 0){
+            expr += "(";
+            subBracketcount++;
+          } else if(subBracketcount>0){
+            expr += ")";
+            subBracketcount--;
+          }
+          //expr += "()";
+        } else if (val === "⌫") {
+          
+          expr = expr.slice(0, -1);
+        } else {
+          // 🔹 Operator replace fix
+          if (/[\+\−×÷]$/.test(expr) && /[\+\−×÷]/.test(val)) {
+            console.log(resEl.textContent);
+            expr = expr.slice(0, -1) + val;
+          } else {
+            console.log(resEl.textContent);
+            expr += val;
+          }
+        }
+        update();
+      });
+    });
+
+    update();
+  </script>
+</body>
+</html>

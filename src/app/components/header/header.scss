@@ -1,0 +1,51 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    
+  }
+  
+  .brand {
+    h2 {
+      margin: 0;
+      font-weight: 600;
+    }
+  
+    small {
+      display: block;
+      color: #555;
+    }
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  
+    a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      transition: background 0.2s ease, color 0.2s ease,
+        border 0.2s ease;
+    }
+  
+    a:hover {
+      background: #ffe5f5; /* soft pink hover */
+      border-bottom: 2px solid var(--accent-pink);
+    }
+  
+    .active {
+      border-bottom: 2px solid var(--accent-pink);
+      color: #000;
+    }
+  }
+  .nav-links a.active{
+    background: #ffe5f8;
+    border-bottom: 2px solid var(--accent-pink);
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  
