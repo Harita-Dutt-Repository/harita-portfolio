@@ -1,0 +1,67 @@
+.projects-container {
+    text-align: center;
+    padding: 40px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 0 20px;
+  }
+  
+  .project-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  .tech-list span {
+    background: #e7f0ff;
+    padding: 6px 10px;
+    margin: 4px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: inline-block;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .btn.live {
+    background: #007bff;
+    color: #fff;
+  }
+  
+  .btn.git {
+    background: #24292f;
+    color: #fff;
+  }
+  
+  .btn:hover {
+    opacity: 0.85;
+  }
+  
